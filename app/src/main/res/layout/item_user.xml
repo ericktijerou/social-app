@@ -49,7 +49,7 @@
             android:transitionName="@{@string/user_image_transition + user.id}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadUrl="@{user.picture.thumbnail}"
+            app:loadUrl="@{user.picture.large}"
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:layout_marginBottom="@dimen/text_margin"
             android:gravity="end"
             android:maxLines="1"
-            android:text="@{user.name.first}"
+            android:text="@{user.name.title}"
             android:textAlignment="textEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorAccent"
@@ -81,7 +81,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{user.name.first}"
+            android:text="@{user.name.last + ' ' + user.name.first}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:transitionName="@{@string/user_name_transition + user.id}"
             app:layout_constraintLeft_toRightOf="@+id/image_thumbnail"
@@ -97,19 +97,20 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="@{user.name.first}"
+            android:text="@{user.gender}"
             app:layout_constraintLeft_toRightOf="@+id/image_thumbnail"
             app:layout_constraintRight_toLeftOf="@+id/button_ticket"
             app:layout_constraintTop_toBottomOf="@+id/text_name"
             tools:text="@tools:sample/lorem/random" />
 
-        <ImageButton
+        <TextView
             android:id="@+id/button_ticket"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="@dimen/design_fab_size_normal"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_margin"
             android:elevation="@dimen/design_appbar_elevation"
+            android:text="@{String.valueOf(user.id)}"
             android:theme="@style/AppTheme.ColoredButtonOverlay"
             app:layout_constraintBottom_toBottomOf="@id/cardview"
             app:layout_constraintRight_toRightOf="parent" />

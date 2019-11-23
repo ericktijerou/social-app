@@ -43,7 +43,7 @@
                     android:scaleType="centerCrop"
                     android:tint="@color/translucentBlack"
                     app:layout_collapseMode="parallax"
-                    app:loadUrl="@{viewModel.user.picture.thumbnail}"
+                    app:loadUrl="@{viewModel.user.picture.large}"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -58,6 +58,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <include
+            android:id="@+id/include_content"
             layout="@layout/content_user"
             app:viewModel="@{viewModel}" />
 

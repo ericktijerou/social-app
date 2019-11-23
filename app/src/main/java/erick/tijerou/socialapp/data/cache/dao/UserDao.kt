@@ -15,8 +15,11 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg users: UserEntity)
 
-    @Query("SELECT * FROM User WHERE id = :id")
-    suspend fun getUserById(id: Long): UserEntity
+    @Query("SELECT * FROM User WHERE id = :userId")
+    suspend fun getUserById(userId: Long): UserEntity
+
+    @Query("UPDATE User SET favourite = :isFavourite WHERE id = :userId")
+    suspend fun setFavourite(userId: Long, isFavourite: Boolean)
 
     @Query("DELETE FROM User")
     suspend fun deteleAll()

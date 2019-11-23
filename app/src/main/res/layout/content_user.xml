@@ -2,14 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.andremion.theatre.event.detail.EventActivity"
     tools:showIn="@layout/activity_user_detail"
     tools:targetApi="lollipop">
 
     <data>
 
         <import type="erick.tijerou.socialapp.presentation.ui.userdetail.UserDetailViewModel" />
-
         <import type="android.view.View" />
 
         <variable
@@ -55,18 +53,22 @@
             app:layout_constraintDimensionRatio="W,4:3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadUrl="@{viewModel.user.picture.thumbnail}"
+            app:loadUrl="@{viewModel.user.picture.large}"
             tools:src="@tools:sample/backgrounds/scenic" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:tint="@android:color/white"
+        <ToggleButton
+            android:id="@+id/button_favorite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_favorite"
+            android:checked="@{viewModel.user.favourite}"
+            android:text=""
+            android:textOff=""
+            android:textOn=""
             android:transitionGroup="true"
+            android:layout_margin="@dimen/text_margin"
             app:layout_constraintRight_toRightOf="@id/card_main"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/card_main"/>
 
         <TextView
             android:id="@+id/text_name"
@@ -75,12 +77,12 @@
             android:layout_margin="@dimen/text_margin"
             android:elevation="@dimen/cardview_default_elevation"
             android:maxLines="2"
-            android:text="@{viewModel.user.name.last}"
+            android:text="@{viewModel.user.name.last + ' ' + viewModel.user.name.first}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:transitionName="@{@string/user_name_transition + viewModel.user.id}"
             app:layout_constraintLeft_toRightOf="@id/image_thumbnail"
             app:layout_constraintRight_toRightOf="@id/card_main"
-            app:layout_constraintTop_toBottomOf="@id/fbShare"
+            app:layout_constraintTop_toBottomOf="@id/button_favorite"
             tools:text="@tools:sample/full_names" />
 
         <TextView
@@ -90,7 +92,7 @@
             android:layout_margin="@dimen/text_margin"
             android:elevation="@dimen/cardview_default_elevation"
             android:maxLines="1"
-            android:text="@{viewModel.user.name.last}"
+            android:text="@{viewModel.user.email}"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintLeft_toRightOf="@id/image_thumbnail"
             app:layout_constraintRight_toRightOf="@id/card_main"
@@ -108,28 +110,24 @@
             app:layout_constraintTop_toBottomOf="@id/text_venue"
             tools:rating="3.5" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+        <TextView
+            android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
+            android:paddingTop="@dimen/fab_margin"
             android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/lorem_ipsum"
             android:transitionGroup="true"
             app:layout_constraintBottom_toBottomOf="@id/card_main"
             app:layout_constraintLeft_toLeftOf="@id/card_main"
             app:layout_constraintRight_toRightOf="@id/card_main"
-            app:layout_constraintTop_toBottomOf="@id/rating_bar"
-            app:pageMargin="@{@dimen/activity_horizontal_margin}">
+            app:layout_constraintTop_toBottomOf="@id/rating_bar">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:setupWithViewPager="@{viewPager}"/>
 
-        </androidx.viewpager.widget.ViewPager>
+        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

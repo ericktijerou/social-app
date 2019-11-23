@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.BounceInterpolator
+import android.view.animation.ScaleAnimation
+import android.widget.CompoundButton
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.Observable
 import androidx.view.doOnPreDraw
@@ -46,6 +50,18 @@ class UserDetailActivity : AppCompatActivity() {
                 supportStartPostponedEnterTransition()
             }
         }
+
+        binding.includeContent.buttonFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
+            buttonView.startAnimation(buildAnimation())
+            viewModel.setFavourite(viewModel.user.value?.id, isChecked)
+        }
+    }
+
+    private fun buildAnimation() : ScaleAnimation {
+        val scaleAnimation = ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f)
+        scaleAnimation.duration = 500
+        scaleAnimation.interpolator = BounceInterpolator()
+        return scaleAnimation
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

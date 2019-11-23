@@ -32,4 +32,11 @@ class UserDetailViewModel(
         }
     }
 
+    fun setFavourite(userId: Long?, isFavourite: Boolean) {
+        launch {
+            userId?.let {
+                interactor.setFavourite(it, isFavourite)
+            }
+        }
+    }
 }

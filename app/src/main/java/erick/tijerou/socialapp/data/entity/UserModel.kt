@@ -10,7 +10,8 @@ data class UserModel(
     val gender: String,
     val name: NameModel,
     val email: String,
-    val picture: PictureModel
+    val picture: PictureModel,
+    val favourite: Boolean
 )
 
 fun UserModel.toDomain() = User(
@@ -18,7 +19,8 @@ fun UserModel.toDomain() = User(
     gender = gender,
     name = name.toDomain(),
     email = email,
-    picture = picture.toDomain()
+    picture = picture.toDomain(),
+    favourite = favourite
 )
 
 fun UserModel.toLocal() = UserEntity (
@@ -30,5 +32,6 @@ fun UserModel.toLocal() = UserEntity (
     email = email,
     imageLarge = picture.large,
     imageMedium = picture.medium,
-    thumbnail = picture.thumbnail
+    thumbnail = picture.thumbnail,
+    favourite = favourite
 )

@@ -13,8 +13,8 @@ class UserDataStore(private val userDao: UserDao) {
         userDao.getAll().map { it.toData() }
     }
 
-    suspend fun getUser(id: Long): UserModel = withContext(Dispatchers.IO) {
-        userDao.getUserById(id).toData()
+    suspend fun getUser(userId: Long): UserModel = withContext(Dispatchers.IO) {
+        userDao.getUserById(userId).toData()
     }
 
     suspend fun saveUsers(users: List<UserModel>): List<UserModel> = withContext(Dispatchers.IO) {
@@ -22,5 +22,9 @@ class UserDataStore(private val userDao: UserDao) {
         val userLocalList = users.map { it.toLocal() }
         userDao.insertAll(*userLocalList.toTypedArray())
         userLocalList.map { it.toData() }
+    }
+
+    suspend fun setFavourite(userId: Long, isFavourite: Boolean) {
+        userDao.setFavourite(userId, isFavourite)
     }
 }

@@ -17,4 +17,8 @@ class UserInteractorImp(
     override suspend fun getUser(id: Long): User = withContext(IO) {
         repository.getUser(id)
     }
+
+    override suspend fun setFavourite(userId: Long, isFavourite: Boolean) {
+        repository.setFavourite(userId, isFavourite)
+    }
 }

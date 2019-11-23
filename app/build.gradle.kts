@@ -47,7 +47,7 @@ android {
     compileSdkVersion(29)
 
     defaultConfig {
-        applicationId = "io.github.wellingtoncosta.feed"
+        applicationId = "erick.tijerou.socialapp"
         minSdkVersion(19)
         targetSdkVersion(29)
         versionCode = 1

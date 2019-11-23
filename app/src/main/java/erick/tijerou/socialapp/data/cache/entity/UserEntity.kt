@@ -16,7 +16,8 @@ data class UserEntity(
     val email: String,
     val imageLarge: String,
     val imageMedium: String,
-    val thumbnail: String
+    val thumbnail: String,
+    val favourite: Boolean
 )
 
 fun UserEntity.toData() = UserModel(
@@ -24,5 +25,6 @@ fun UserEntity.toData() = UserModel(
     gender = gender,
     name = NameModel(title, first, lastName),
     email = email,
-    picture = PictureModel(imageLarge, imageMedium, thumbnail)
+    picture = PictureModel(imageLarge, imageMedium, thumbnail),
+    favourite = favourite
 )

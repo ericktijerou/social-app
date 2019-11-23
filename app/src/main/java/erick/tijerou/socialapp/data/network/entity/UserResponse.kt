@@ -26,5 +26,6 @@ fun UserResponse.toData() = UserModel(
     gender = gender,
     name = name.toData(),
     email = email,
-    picture = picture.toData()
+    picture = picture.toData(),
+    favourite = false
 )

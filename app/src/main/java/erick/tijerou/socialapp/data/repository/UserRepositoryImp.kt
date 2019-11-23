@@ -24,7 +24,11 @@ class UserRepositoryImp(
 
     }
 
-    override suspend fun getUser(id: Long): User = withContext(Dispatchers.IO) {
-        userDataStore.getUser(id).toDomain()
+    override suspend fun getUser(userId: Long): User = withContext(Dispatchers.IO) {
+        userDataStore.getUser(userId).toDomain()
+    }
+
+    override suspend fun setFavourite(userId: Long, isFavourite: Boolean) {
+        userDataStore.setFavourite(userId, isFavourite)
     }
 }
