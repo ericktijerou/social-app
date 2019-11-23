@@ -1,5 +1,6 @@
 package erick.tijerou.socialapp.data.network.di
 
+import erick.tijerou.socialapp.data.network.UserCloudStore
 import erick.tijerou.socialapp.data.network.utils.buildOkHttpClient
 import erick.tijerou.socialapp.data.network.utils.buildRetrofit
 import erick.tijerou.socialapp.data.network.api.SocialApi
@@ -15,6 +16,7 @@ internal val networkModule = module {
     single(named(NAMED_CLIENT)) { createHttpClient() }
     single(named(NAMED)) { createRetrofit(get(named(NAMED_CLIENT))) }
     single { provideApi(get(named(NAMED))) }
+    single { UserCloudStore(get()) }
 }
 
 private fun createHttpClient(): OkHttpClient {

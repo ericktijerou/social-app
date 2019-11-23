@@ -2,6 +2,7 @@ package erick.tijerou.socialapp.presentation
 
 import android.app.Application
 import erick.tijerou.socialapp.BuildConfig.DEBUG
+import erick.tijerou.socialapp.data.cache.di.cacheModule
 import erick.tijerou.socialapp.data.network.di.networkModule
 import erick.tijerou.socialapp.presentation.config.koin.*
 import org.koin.android.ext.koin.androidContext

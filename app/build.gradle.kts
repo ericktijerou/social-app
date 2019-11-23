@@ -29,6 +29,9 @@ import Dependencies.retrofit
 import Dependencies.retrofitGsonConverter
 import Dependencies.retrofitKotlixConverter
 import Dependencies.retrofitScalarsConverter
+import Dependencies.roomCompiler
+import Dependencies.roomKtx
+import Dependencies.roomRuntime
 import Dependencies.timber
 
 plugins {
@@ -119,6 +122,11 @@ dependencies {
 
     implementation(okHttp)
     implementation(okHttpInterceptor)
+
+    //Room
+    implementation(roomRuntime)
+    kapt(roomCompiler)
+    implementation(roomKtx)
 
     // Retrofit
     implementation(retrofit)

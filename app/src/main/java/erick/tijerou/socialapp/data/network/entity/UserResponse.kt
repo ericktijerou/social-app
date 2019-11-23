@@ -1,6 +1,6 @@
 package erick.tijerou.socialapp.data.network.entity
 
-import erick.tijerou.socialapp.domain.entity.User
+import erick.tijerou.socialapp.data.entity.UserModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,8 +22,9 @@ data class UserResponse(
     val nat: String
 )
 
-fun UserResponse.toDomain() = User(
-    name = name.toDomain(),
+fun UserResponse.toData() = UserModel(
+    gender = gender,
+    name = name.toData(),
     email = email,
-    picture = picture.toDomain()
+    picture = picture.toData()
 )

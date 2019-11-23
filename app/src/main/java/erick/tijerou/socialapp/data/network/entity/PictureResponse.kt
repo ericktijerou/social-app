@@ -1,6 +1,6 @@
 package erick.tijerou.socialapp.data.network.entity
 
-import erick.tijerou.socialapp.domain.entity.Picture
+import erick.tijerou.socialapp.data.entity.PictureModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -14,7 +14,7 @@ data class PictureResponse(
     val thumbnail: String
 )
 
-fun PictureResponse.toDomain() = Picture(
+fun PictureResponse.toData() = PictureModel(
     large = large,
     medium = medium,
     thumbnail = thumbnail

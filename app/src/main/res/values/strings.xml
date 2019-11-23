@@ -2,4 +2,6 @@
     <string name="app_name">Social App</string>
     <string name="load_users_error">Couldn\'t load users.</string>
     <string name="no_users">There are no users available</string>
+    <string name="no_friends">There are no friends yet</string>
+    <string name="load_user_detail_error">Couldn\'t load user details.</string>
 </resources>

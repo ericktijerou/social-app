@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar"
-            app:onRefreshListener="@{() -> viewModel.getUsers()}"
+            app:onRefreshListener="@{() -> viewModel.getUsers(true)}"
             app:refreshing="@{safeUnbox(viewModel.loading)}">
 
             <androidx.recyclerview.widget.RecyclerView

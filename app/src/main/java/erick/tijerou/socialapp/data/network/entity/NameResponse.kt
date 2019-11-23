@@ -1,6 +1,6 @@
 package erick.tijerou.socialapp.data.network.entity
 
-import erick.tijerou.socialapp.domain.entity.Name
+import erick.tijerou.socialapp.data.entity.NameModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -14,7 +14,7 @@ data class NameResponse(
     val last: String
 )
 
-fun NameResponse.toDomain() = Name(
+fun NameResponse.toData() = NameModel(
     title = title,
     first = first,
     last = last

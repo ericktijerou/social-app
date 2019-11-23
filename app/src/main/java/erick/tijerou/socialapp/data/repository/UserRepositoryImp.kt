@@ -1,20 +1,30 @@
 package erick.tijerou.socialapp.data.repository
 
-import erick.tijerou.socialapp.data.network.api.SocialApi
-import erick.tijerou.socialapp.data.network.entity.toDomain
+import erick.tijerou.socialapp.data.cache.UserDataStore
+import erick.tijerou.socialapp.data.entity.toDomain
+import erick.tijerou.socialapp.data.network.UserCloudStore
 import erick.tijerou.socialapp.domain.entity.User
-import erick.tijerou.socialapp.domain.exception.ServerException
 import erick.tijerou.socialapp.domain.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class UserRepositoryImp(
-    private val api: SocialApi
+    private val cloudStore: UserCloudStore,
+    private val userDataStore: UserDataStore
 ) : UserRepository {
 
-    override suspend fun getUsers(): List<User> = withContext(Dispatchers.IO) {
-        api.getUsers().let { response ->
-            response.body()?.results?.map { it.toDomain() } ?: throw ServerException()
+    override suspend fun getUsers(refresh: Boolean): List<User> = withContext(Dispatchers.IO) {
+        val userLocalList = userDataStore.getUsers().map { it.toDomain() }
+        if (userLocalList.isEmpty() || refresh) {
+            val remote = cloudStore.getUsers()
+            userDataStore.saveUsers(remote).map { it.toDomain() }
+        } else {
+            userLocalList
         }
+
+    }
+
+    override suspend fun getUser(id: Long): User = withContext(Dispatchers.IO) {
+        userDataStore.getUser(id).toDomain()
     }
 }

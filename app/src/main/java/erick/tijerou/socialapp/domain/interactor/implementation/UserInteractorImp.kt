@@ -10,7 +10,11 @@ class UserInteractorImp(
     private val repository: UserRepository
 ) : UserInteractor {
 
-    override suspend fun getUsers(): List<User> =  withContext(IO) {
-        repository.getUsers()
+    override suspend fun getUsers(refresh: Boolean): List<User> = withContext(IO) {
+        repository.getUsers(refresh)
+    }
+
+    override suspend fun getUser(id: Long): User = withContext(IO) {
+        repository.getUser(id)
     }
 }
