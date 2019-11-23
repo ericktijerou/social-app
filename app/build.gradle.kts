@@ -9,9 +9,6 @@ import Dependencies.androidTestExtJunit
 import Dependencies.androidTestRules
 import Dependencies.androidTestRunner
 import Dependencies.androidViewModel
-import Dependencies.fuelCore
-import Dependencies.fuelCoroutines
-import Dependencies.fuelKotlinSerialization
 import Dependencies.junit
 import Dependencies.koinAndroidScope
 import Dependencies.koinAndroidViewModel
@@ -24,8 +21,14 @@ import Dependencies.kotlinStdLib
 import Dependencies.leakCanary
 import Dependencies.materialDesign
 import Dependencies.mockk
+import Dependencies.okHttp
+import Dependencies.okHttpInterceptor
 import Dependencies.okhttpMockWebServer
 import Dependencies.okhttpTls
+import Dependencies.retrofit
+import Dependencies.retrofitGsonConverter
+import Dependencies.retrofitKotlixConverter
+import Dependencies.retrofitScalarsConverter
 import Dependencies.timber
 
 plugins {
@@ -59,7 +62,7 @@ android {
             buildConfigField(
                 "String",
                 "API_URL",
-                "\"https://jsonplaceholder.typicode.com\""
+                "\"https://randomuser.me/\""
             )
         }
 
@@ -75,7 +78,7 @@ android {
             buildConfigField(
                 "String",
                 "API_URL",
-                "\"https://jsonplaceholder.typicode.com\""
+                "\"https://randomuser.me/\""
             )
         }
     }
@@ -114,10 +117,14 @@ dependencies {
     implementation(androidViewModel)
     implementation(androidTestEspressoCore)
 
-    // Fuel
-    implementation(fuelCore)
-    implementation(fuelCoroutines)
-    implementation(fuelKotlinSerialization)
+    implementation(okHttp)
+    implementation(okHttpInterceptor)
+
+    // Retrofit
+    implementation(retrofit)
+    implementation(retrofitGsonConverter)
+    implementation(retrofitScalarsConverter)
+    implementation(retrofitKotlixConverter)
 
     // Google Material Design
     implementation(materialDesign)

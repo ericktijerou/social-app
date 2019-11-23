@@ -12,9 +12,13 @@ object Dependencies {
     const val androidTestRunner = "androidx.test:runner:${Versions.androidTestRunner}"
     const val androidViewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.androidViewModel}"
 
-    const val fuelCore = "com.github.kittinunf.fuel:fuel:${Versions.fuel}"
-    const val fuelCoroutines = "com.github.kittinunf.fuel:fuel-coroutines:${Versions.fuel}"
-    const val fuelKotlinSerialization = "com.github.kittinunf.fuel:fuel-kotlinx-serialization:${Versions.fuel}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    const val okHttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val retrofitScalarsConverter = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
+    const val retrofitKotlixConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.retrofitKotlinxVersion}"
 
     const val junit = "junit:junit:${Versions.junit}"
 
@@ -55,6 +59,7 @@ object Versions {
     internal const val androidTestRunner = "1.2.0"
     internal const val androidViewModel = "2.0.0"
     internal const val fuel = "2.1.0"
+    internal const val retrofit = "2.6.1"
     internal const val junit = "4.12"
     internal const val koin = "2.0.1"
     internal const val kotlinStdLib = "1.3.41"
@@ -65,4 +70,6 @@ object Versions {
     internal const val mockk = "1.9.3"
     internal const val okhttp = "4.0.1"
     internal const val timber = "4.7.1"
+    internal const val retrofitKotlinxVersion = "0.4.0"
+
 }
