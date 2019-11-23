@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <import type="android.view.View"/>
+        <import type="erick.tijerou.socialapp.presentation.ui.userlist.UserListViewModel"/>
+        <variable name="viewModel" type="UserListViewModel"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/list_posts_root"
+        android:id="@+id/list_user_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.ui.listposts.ListPostsActivity"
+        tools:context=".presentation.ui.userlist.UserListActivity"
         android:background="@color/colorBackground">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -36,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar"
-            app:onRefreshListener="@{() -> viewModel.getAllPosts()}"
+            app:onRefreshListener="@{() -> viewModel.getUsers()}"
             app:refreshing="@{safeUnbox(viewModel.loading)}">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -47,18 +53,18 @@
                 android:background="@android:color/transparent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
-                tools:listitem="@layout/list_posts_item"
-                android:visibility="@{viewModel.posts.size > 0 ? View.VISIBLE : View.GONE}"/>
+                tools:listitem="@layout/item_user"
+                android:visibility="@{viewModel.users.size > 0 ? View.VISIBLE : View.GONE}"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <TextView
-            android:id="@+id/no_posts_text"
+            android:id="@+id/no_users_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_posts"
+            android:text="@string/no_users"
             android:textSize="@dimen/text_size_medium"
-            android:visibility="@{(safeUnbox(viewModel.loading) || viewModel.posts.size > 0) ? View.GONE : View.VISIBLE}"
+            android:visibility="@{(safeUnbox(viewModel.loading) || viewModel.users.size > 0) ? View.GONE : View.VISIBLE}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

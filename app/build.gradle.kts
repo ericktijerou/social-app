@@ -60,9 +60,9 @@ android {
             isTestCoverageEnabled = true
 
             buildConfigField(
-                "String",
-                "API_URL",
-                "\"https://randomuser.me/\""
+                    "String",
+                    "API_URL",
+                    "\"https://randomuser.me/\""
             )
         }
 
@@ -76,9 +76,9 @@ android {
             proguardFile(file("proguard-rules.pro"))
 
             buildConfigField(
-                "String",
-                "API_URL",
-                "\"https://randomuser.me/\""
+                    "String",
+                    "API_URL",
+                    "\"https://randomuser.me/\""
             )
         }
     }

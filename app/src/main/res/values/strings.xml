@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Social App</string>
+    <string name="load_users_error">Couldn\'t load users.</string>
+    <string name="no_users">There are no users available</string>
 </resources>

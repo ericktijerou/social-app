@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="erick.tijerou.socialapp.domain.entity.User" />
+        <variable name="user" type="User" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:cardCornerRadius="4dp"
+        android:layout_margin="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:paddingStart="@dimen/margin_padding_size_medium"
+                android:paddingEnd="@dimen/margin_padding_size_medium"
+                android:paddingLeft="@dimen/margin_padding_size_medium"
+                android:paddingRight="@dimen/margin_padding_size_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{user.name.title}"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:paddingStart="@dimen/margin_padding_size_medium"
+                android:paddingEnd="@dimen/margin_padding_size_medium"
+                android:paddingLeft="@dimen/margin_padding_size_medium"
+                android:paddingRight="@dimen/margin_padding_size_medium"
+                android:paddingBottom="@dimen/margin_padding_size_medium"
+                app:layout_constraintTop_toBottomOf="@id/username"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{user.name.first + user.name.last}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
