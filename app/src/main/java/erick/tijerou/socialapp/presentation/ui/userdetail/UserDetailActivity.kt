@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
-import android.widget.CompoundButton
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
 import androidx.view.doOnPreDraw
 import erick.tijerou.socialapp.R
 import erick.tijerou.socialapp.presentation.ui.extension.observe
@@ -75,6 +73,9 @@ class UserDetailActivity : AppCompatActivity() {
             title = null
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+        }
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
         }
     }
 

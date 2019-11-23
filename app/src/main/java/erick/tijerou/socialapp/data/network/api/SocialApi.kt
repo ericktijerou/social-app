@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 interface SocialApi {
 
-    @GET("api/?results=2")
+    @GET("api/?results=20")
     suspend fun getUsers(): Response<BaseResponse<List<UserResponse>>>
 
 }

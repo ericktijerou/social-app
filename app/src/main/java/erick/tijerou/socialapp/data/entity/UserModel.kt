@@ -24,7 +24,6 @@ fun UserModel.toDomain() = User(
 )
 
 fun UserModel.toLocal() = UserEntity (
-    id = 0,
     gender = gender,
     title = name.title,
     first = name.first,

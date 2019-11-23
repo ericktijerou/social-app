@@ -8,7 +8,7 @@ import erick.tijerou.socialapp.data.entity.UserModel
 
 @Entity(tableName = "User")
 data class UserEntity(
-    @PrimaryKey(autoGenerate = true) var id: Long,
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
     val gender: String,
     val title: String,
     val first: String,

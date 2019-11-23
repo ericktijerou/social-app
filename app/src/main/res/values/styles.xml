@@ -23,7 +23,7 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.Dog" parent="AppTheme.NoActionBar.TranslucentStatusBar">
+    <style name="AppTheme.User" parent="AppTheme.NoActionBar.TranslucentStatusBar">
 
     </style>
 

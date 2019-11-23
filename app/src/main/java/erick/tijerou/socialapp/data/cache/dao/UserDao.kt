@@ -13,7 +13,7 @@ interface UserDao {
     suspend fun getAll(): List<UserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg users: UserEntity)
+    suspend fun insertAll(users: List<UserEntity>)
 
     @Query("SELECT * FROM User WHERE id = :userId")
     suspend fun getUserById(userId: Long): UserEntity
