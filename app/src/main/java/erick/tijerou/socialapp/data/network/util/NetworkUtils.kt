@@ -1,4 +1,4 @@
-package erick.tijerou.socialapp.data.network.utils
+package erick.tijerou.socialapp.data.network.util
 
 import erick.tijerou.socialapp.BuildConfig
 import okhttp3.OkHttpClient

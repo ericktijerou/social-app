@@ -1,8 +1,8 @@
 package erick.tijerou.socialapp.data.network.di
 
 import erick.tijerou.socialapp.data.network.UserCloudStore
-import erick.tijerou.socialapp.data.network.utils.buildOkHttpClient
-import erick.tijerou.socialapp.data.network.utils.buildRetrofit
+import erick.tijerou.socialapp.data.network.util.buildOkHttpClient
+import erick.tijerou.socialapp.data.network.util.buildRetrofit
 import erick.tijerou.socialapp.data.network.api.SocialApi
 import okhttp3.OkHttpClient
 import org.koin.core.qualifier.named

@@ -9,6 +9,7 @@ import Dependencies.androidTestExtJunit
 import Dependencies.androidTestRules
 import Dependencies.androidTestRunner
 import Dependencies.androidViewModel
+import Dependencies.glide
 import Dependencies.junit
 import Dependencies.koinAndroidScope
 import Dependencies.koinAndroidViewModel
@@ -46,7 +47,7 @@ android {
 
     defaultConfig {
         applicationId = "io.github.wellingtoncosta.feed"
-        minSdkVersion(16)
+        minSdkVersion(19)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
@@ -122,6 +123,9 @@ dependencies {
 
     implementation(okHttp)
     implementation(okHttpInterceptor)
+
+    //Glide
+    implementation(glide)
 
     //Room
     implementation(roomRuntime)

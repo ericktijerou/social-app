@@ -60,7 +60,7 @@ object Dependencies {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
-
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
 }
 
 object Versions {
@@ -88,5 +88,7 @@ object Versions {
     internal const val roomVersion = "2.1.0"
     internal const val timber = "4.7.1"
     internal const val retrofitKotlinxVersion = "0.4.0"
+    internal const val glideVersion = "4.5.0"
+
 
 }
