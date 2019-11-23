@@ -3,6 +3,7 @@ import Dependencies.androidConstraintLayout
 import Dependencies.androidCore
 import Dependencies.androidCoreTesting
 import Dependencies.androidDataBindingCompiler
+import Dependencies.androidKtx
 import Dependencies.androidLiveData
 import Dependencies.androidTestEspressoCore
 import Dependencies.androidTestExtJunit
@@ -120,6 +121,7 @@ dependencies {
     implementation(androidLiveData)
     implementation(androidViewModel)
     implementation(androidTestEspressoCore)
+    implementation(androidKtx)
 
     implementation(okHttp)
     implementation(okHttpInterceptor)

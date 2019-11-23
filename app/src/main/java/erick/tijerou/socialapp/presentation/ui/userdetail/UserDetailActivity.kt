@@ -3,7 +3,10 @@ package erick.tijerou.socialapp.presentation.ui.userdetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
+import androidx.view.doOnPreDraw
 import erick.tijerou.socialapp.R
 import erick.tijerou.socialapp.presentation.ui.extension.observe
 import erick.tijerou.socialapp.presentation.ui.userlist.UserListActivity.Companion.USER_ID
@@ -21,6 +24,7 @@ class UserDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportPostponeEnterTransition()
 
         intent.extras?.let {
             if(intent.hasExtra(USER_ID)) {
@@ -37,6 +41,11 @@ class UserDetailActivity : AppCompatActivity() {
 
         setupToolbar()
         observeError()
+        viewModel.user.observe(this) {
+            (window.decorView as ViewGroup).doOnPreDraw {
+                supportStartPostponedEnterTransition()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

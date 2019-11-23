@@ -2,7 +2,10 @@ package erick.tijerou.socialapp.presentation.ui.userlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.core.util.Pair
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import erick.tijerou.socialapp.R
 import erick.tijerou.socialapp.presentation.ui.extension.observe
@@ -56,10 +59,16 @@ class UserListActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToUserDetail(userId: Long) {
+    private fun goToUserDetail(view: View, userId: Long) {
         Timber.d("userId = $userId")
-
-        startNewActivity(UserDetailActivity::class) {
+        val cardView = view.findViewById<View>(R.id.cardview)
+        val imageView = view.findViewById<View>(R.id.image_thumbnail)
+        val nameView = view.findViewById<View>(R.id.text_name)
+        val sharedViews = arrayOf(
+            Pair(cardView, ViewCompat.getTransitionName(cardView)),
+            Pair(imageView, ViewCompat.getTransitionName(imageView)),
+            Pair(nameView, ViewCompat.getTransitionName(nameView)))
+        startNewActivity(UserDetailActivity::class, sharedViews) {
             putExtra(USER_ID, userId)
         }
     }

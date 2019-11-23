@@ -9,7 +9,7 @@ import erick.tijerou.socialapp.databinding.ItemUserBinding
 import erick.tijerou.socialapp.domain.entity.User
 
 class UserListAdapter(
-    private val onItemClick: (Long) -> Unit
+    private val onItemClick: (View, Long) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val userList = mutableListOf<User>()
@@ -35,7 +35,7 @@ class UserListAdapter(
         val binding = (holder as UserListViewHolder).binding
 
         binding.user = user
-        binding.constraintLayout.setOnClickListener { onItemClick(user.id) }
+        binding.constraintLayout.setOnClickListener { onItemClick(it, user.id) }
     }
 
     override fun getItemCount() = userList.size

@@ -1,63 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="lollipop">
 
     <data>
+
         <import type="erick.tijerou.socialapp.domain.entity.User" />
-        <variable name="user" type="User" />
+
+        <variable
+            name="user"
+            type="User" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:cardCornerRadius="4dp"
-        android:layout_margin="5dp">
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingLeft="@dimen/text_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/text_margin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_layout"
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:transitionName="@{@string/user_card_transition + user.id}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/image_thumbnail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_thumbnail"
+            android:layout_width="@dimen/image_thumbnail_size"
+            android:layout_height="@dimen/image_thumbnail_size"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:background="@android:color/darker_gray"
+            android:elevation="@dimen/design_appbar_elevation"
+            android:scaleType="centerCrop"
+            android:transitionName="@{@string/user_image_transition + user.id}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadUrl="@{user.picture.thumbnail}"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/text_price"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:gravity="end"
+            android:maxLines="1"
+            android:text="@{user.name.first}"
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/cardview"
+            app:layout_constraintTop_toBottomOf="@id/image_thumbnail"
+            tools:text="@tools:sample/us_zipcodes" />
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:textSize="@dimen/text_size_medium"
-                android:textColor="@color/colorPrimaryText"
-                android:layout_marginTop="@dimen/margin_padding_size_medium"
-                android:paddingStart="@dimen/margin_padding_size_medium"
-                android:paddingEnd="@dimen/margin_padding_size_medium"
-                android:paddingLeft="@dimen/margin_padding_size_medium"
-                android:paddingRight="@dimen/margin_padding_size_medium"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="@{user.name.title}"/>
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{user.name.first}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:transitionName="@{@string/user_name_transition + user.id}"
+            app:layout_constraintLeft_toRightOf="@+id/image_thumbnail"
+            app:layout_constraintRight_toRightOf="@id/cardview"
+            app:layout_constraintTop_toTopOf="@id/cardview"
+            tools:text="@tools:sample/full_names" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_large"
-                android:textColor="@color/colorPrimaryText"
-                android:layout_marginTop="@dimen/margin_padding_size_small"
-                android:paddingStart="@dimen/margin_padding_size_medium"
-                android:paddingEnd="@dimen/margin_padding_size_medium"
-                android:paddingLeft="@dimen/margin_padding_size_medium"
-                android:paddingRight="@dimen/margin_padding_size_medium"
-                android:paddingBottom="@dimen/margin_padding_size_medium"
-                app:layout_constraintTop_toBottomOf="@id/username"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="@{user.name.first + user.name.last}" />
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{user.name.first}"
+            app:layout_constraintLeft_toRightOf="@+id/image_thumbnail"
+            app:layout_constraintRight_toLeftOf="@+id/button_ticket"
+            app:layout_constraintTop_toBottomOf="@+id/text_name"
+            tools:text="@tools:sample/lorem/random" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/button_ticket"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="@dimen/design_fab_size_normal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:elevation="@dimen/design_appbar_elevation"
+            android:theme="@style/AppTheme.ColoredButtonOverlay"
+            app:layout_constraintBottom_toBottomOf="@id/cardview"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

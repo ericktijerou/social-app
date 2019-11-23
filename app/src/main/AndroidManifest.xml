@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="erick.tijerou.socialapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".presentation.SocialApp"
@@ -11,9 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".presentation.ui.userdetail.UserDetailActivity"></activity>
-        <activity android:name=".presentation.ui.userlist.UserListActivity">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".presentation.ui.userdetail.UserDetailActivity"
+            android:theme="@style/AppTheme.User" />
+        <activity
+            android:name=".presentation.ui.userlist.UserListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
