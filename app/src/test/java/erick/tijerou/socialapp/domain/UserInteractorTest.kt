@@ -1,6 +1,6 @@
 package erick.tijerou.socialapp.domain
 
-import erick.tijerou.socialapp.domain.exception.ServerException
+import erick.tijerou.socialapp.core.exception.NotFoundException
 import erick.tijerou.socialapp.domain.interactor.implementation.UserInteractorImp
 import erick.tijerou.socialapp.domain.repository.UserRepository
 import erick.tijerou.socialapp.mock.UserMock.oneUser
@@ -42,9 +42,9 @@ class UserInteractorTest {
         Assert.assertEquals(userMock, result)
     }
 
-    @Test(expected = ServerException::class)
+    @Test(expected = NotFoundException::class)
     fun `shouldn't find a user by id`() = runBlocking {
-        coEvery { repository.getUser(any()) } throws ServerException()
+        coEvery { repository.getUser(any()) } throws NotFoundException()
         interactor.getUser(1)
         coVerify { repository.getUser(any()) }
     }

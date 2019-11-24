@@ -14,21 +14,36 @@ class UserRepositoryImp(
 ) : UserRepository {
 
     override suspend fun getUsers(refresh: Boolean): List<User> = withContext(Dispatchers.IO) {
-        val userLocalList = userDataStore.getUsers().map { it.toDomain() }
-        if (userLocalList.isEmpty() || refresh) {
-            val remote = cloudStore.getUsers()
-            userDataStore.saveUsers(remote).map { it.toDomain() }
+        val userLocalList = getUsersFromLocal()
+        if (userLocalList.isNotEmpty() &&  !refresh) {
+            if (userDataStore.isExpired()) {
+                getUsersFromRemote()
+            } else {
+                userLocalList
+            }
         } else {
-            userLocalList
+            getUsersFromRemote()
         }
+    }
 
+    private suspend fun getUsersFromRemote(): List<User> = withContext(Dispatchers.IO) {
+        val usersFromRemote = cloudStore.getUsers()
+        if (usersFromRemote.isNotEmpty()) {
+            userDataStore.saveUsers(usersFromRemote).map { it.toDomain() }
+        } else {
+            getUsersFromLocal()
+        }
+    }
+
+    private suspend fun getUsersFromLocal(): List<User> = withContext(Dispatchers.IO) {
+        userDataStore.getUsers().map { it.toDomain() }
     }
 
     override suspend fun getUser(userId: Long): User = withContext(Dispatchers.IO) {
         userDataStore.getUser(userId).toDomain()
     }
 
-    override suspend fun setFavourite(userId: Long, isFavourite: Boolean) {
+    override suspend fun setFavourite(userId: Long, isFavourite: Boolean) = withContext(Dispatchers.IO) {
         userDataStore.setFavourite(userId, isFavourite)
     }
 }
