@@ -2,8 +2,8 @@
 Offline first Android App using Clean Architecture, MVVM, DataBinding, Koin, Coroutines, LiveData, Room, and AndroidX.</br>
 The data is fetched from <a href='https://randomuser.me/'>Random User</a>.</br>
 
+![](art/img.gif)
 <p>
-  ![](art/img.gif)
   <i>*Data from <a href='https://randomuser.me/'>Random User</a></i></br>
 </p>
 
