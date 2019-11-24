@@ -11,3 +11,4 @@ inline fun <reified T : Any> listByElementsOf(vararg elements: Any): List<T> {
     }
     return mutableList
 }
+
